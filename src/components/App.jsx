@@ -7,7 +7,8 @@ import { Title } from './App.styled';
 import { nanoid } from 'nanoid';
 import Notification from './Notification';
 import noResultsImg from '../img/no-result.png';
-import { CONTACTS, save, load } from '../utils/local-storage';
+import { save, load } from '../utils/local-storage';
+import { LOCAL_STORAGE_KEYS } from '../constants';
 
 export class App extends Component {
   state = {
@@ -16,7 +17,7 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = load(CONTACTS);
+    const contacts = load(LOCAL_STORAGE_KEYS.contacts);
     if (contacts) {
       this.setState({ contacts });
     }
@@ -24,7 +25,7 @@ export class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.contacts) {
-      save(CONTACTS, this.state.contacts);
+      save(LOCAL_STORAGE_KEYS.contacts, this.state.contacts);
     }
   }
 
