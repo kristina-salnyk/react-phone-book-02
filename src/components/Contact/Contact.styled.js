@@ -15,7 +15,7 @@ export const Item = styled.div`
 
 export const Button = styled.button`
   padding: 10px;
-  width: 50px;
+  width: 40px;
   float: right;
   display: flex;
   justify-content: center;
